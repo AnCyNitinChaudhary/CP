@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define int long long
+// #define int long long
 #define endl '\n'
 ll M = 1e9+7;
 #define vi vector<int>
@@ -16,23 +16,35 @@ ll M = 1e9+7;
 
 //Grinding CP to become specialist
 void Nitin_Chaudhary(){
-    ll x,y,k;
-    cin>>x>>y>>k;
-    vector<ll>ansx;
-    vector<ll>ansy;
-    ll sumx=0;
-    ll sumy=0;
-    int val=1;
-    for(ll i=0;i<k-1;i++){
-        ansx.push_back(i);
-        ansy.push_back(i+1);
-        sumx+=i;
-        sumy+=i+1;
+    int n;
+    cin>>n;
+    vi a(n);
+    vi b(n);
+    for(int i=0;i<n;i++)cin>>a[i];
+    for(int i=0;i<n;i++)cin>>b[i];
+    int flag=1;
+    for(int i=0;i<n;i++){
+        if(a[i]!=b[i]){
+            flag=0;
+            break;
+        }
     }
-    ansx.push_back(k*x-sumx);
-    ansy.push_back(k*y-sumy);
-    for(int i=0;i<k;i++)cout<<ansx[i]<<" "<<ansy[i]<<endl;
+    if(flag==0){
+        flag=1;
+        reverse(a.begin(),a.end());
+        for(int i=0;i<n;i++){
+        if(a[i]!=b[i]){
+            flag=0;
+            break;
+        }
+    }
+    }
+    if(flag)cout<<"Bob"<<endl;
+    else cout<<"Alice"<<endl;
     
+    // if((min(a[0],a[n-1])==min(b[0],b[n-1]))&&(max(a[0],a[n-1])==max(b[0],b[n-1])))cout<<"Bob"<<endl;
+    // else cout<<"Alice"<<endl;
+
 }
 
 signed main(){

@@ -18,45 +18,6 @@ ll M = 1e9+7;
 void Nitin_Chaudhary(){
     ll n;
     cin>>n;
-    ll p[n];
-    // map<ll,ll>um;
-    for(ll i=0;i<n;i++){
-        cin>>p[i];
-        // um[p[i]]++;
-    }
-    for(ll i=0;i<n;i++){
-        if(p[i]==n)cout<<1<<" ";
-        else cout<<p[i]+1<<" ";
-    }
-    cout<<endl;
-    // cout<<"here"<<endl;
-    // ll i=0;
-    // unordered_set<int>us;
-    // while(i<n){
-    //     for(int ind=0;ind<n;ind++){
-    //         if((us.find(p[ind])==us.end())&&(p[ind]!=p[i])){
-    //             us.insert(p[ind]);
-    //             cout<<p[ind]<<" ";
-    //             i++;
-    //             break;
-    //         }
-    //     }
-        // cout<<" running"<<endl;
-    // }
-    // while(i<n){
-    //     cout<<"running"<<endl;
-    //     for (auto itr = mp.begin(); itr != mp.end(); ++itr) {
-    //         cout<<itr->first<<endl;
-    //         if(itr->first!=p[i]){
-    //             cout<<itr->first<<" ";
-    //             um.erase(itr->first);
-    //             cout<<"size"<<um.size()<<endl;
-    //             i++;
-    //             break;
-    //         }
-    //     }
-    // }
-    // cout<<endl;
 }
 
 signed main(){
