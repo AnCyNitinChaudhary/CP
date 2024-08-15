@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-// #define int long long
+#define int long long
 #define endl '\n'
 ll M = 1e9+7;
 #define vi vector<int>
@@ -16,35 +16,8 @@ ll M = 1e9+7;
 
 //Grinding CP to become specialist
 void Nitin_Chaudhary(){
-    int n;
+    ll n;
     cin>>n;
-    vi a(n);
-    vi b(n);
-    for(int i=0;i<n;i++)cin>>a[i];
-    for(int i=0;i<n;i++)cin>>b[i];
-    int flag=1;
-    for(int i=0;i<n;i++){
-        if(a[i]!=b[i]){
-            flag=0;
-            break;
-        }
-    }
-    if(flag==0){
-        flag=1;
-        reverse(a.begin(),a.end());
-        for(int i=0;i<n;i++){
-        if(a[i]!=b[i]){
-            flag=0;
-            break;
-        }
-    }
-    }
-    if(flag)cout<<"Bob"<<endl;
-    else cout<<"Alice"<<endl;
-    
-    // if((min(a[0],a[n-1])==min(b[0],b[n-1]))&&(max(a[0],a[n-1])==max(b[0],b[n-1])))cout<<"Bob"<<endl;
-    // else cout<<"Alice"<<endl;
-
 }
 
 signed main(){
