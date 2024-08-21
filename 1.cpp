@@ -14,33 +14,19 @@ ll M = 1e9+7;
 #define bitsize(n) (63 - __builtin_clzll(n))
 #define lcm(a,b) (a/__gcd(a, b)*b)
 
-//Grinding CP
+//Grinding CP to become specialist
 void Nitin_Chaudhary(){
-    ll n,k;
-    cin>>n>>k;
-    vector<int>a(n);
-    for(int i=0;i<n;i++)cin>>a[i];
-    sort(a.begin(),a.end());
-    for(int i=n-2;i>=0;i-=2){
-        if(k==0)break;
-        int diff=a[i+1]-a[i];
-        if(k>diff){
-            k-=diff;
-            a[i]=a[i+1];
-        }
-        else{
-            a[i]+=k;
-            k=0;
-        }
+    ll n;
+    cin>>n;
+    ll a[n];
+    unordered_map<int,int>um;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        um[a[i]]++;
     }
-    int ans=0;
-    for(int i=n-2;i>=0;i-=2){
-        ans+=(a[i+1]-a[i]);
-    }
-    if(n%2==1)ans+=a[0];
-    cout<<ans<<endl;
-    
-
+    int maxi=INT_MIN;
+    for(auto i:um)maxi=max(maxi,i.second);
+    cout<<n-maxi<<endl;
 }
 
 signed main(){
