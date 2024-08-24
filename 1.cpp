@@ -16,17 +16,31 @@ ll M = 1e9+7;
 
 //Grinding CP to become specialist
 void Nitin_Chaudhary(){
-    ll n;
-    cin>>n;
-    ll a[n];
-    unordered_map<int,int>um;
-    for(int i=0;i<n;i++){
-        cin>>a[i];
-        um[a[i]]++;
+    ll n,m,k;
+    cin>>n>>m>>k;
+    vector<ll>cont;
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<m;j++){
+            ll sr,sc,er,ec;
+            sr=max(0LL,i-k+1);
+            er=min(i,n-k);
+            sc=max(0LL,j-k+1);
+            ec=min(j,m-k);
+            ll val=(er-sr+1)*(ec-sc+1);
+            // cout<<val<<endl;
+            cont.push_back(val);
+
+        }
     }
-    int maxi=INT_MIN;
-    for(auto i:um)maxi=max(maxi,i.second);
-    cout<<n-maxi<<endl;
+    sort(cont.begin(),cont.end(),greater<int>());
+    ll w;
+    cin>>w;
+    vector<ll>a(w);
+    for(ll i=0;i<w;i++)cin>>a[i];
+    sort(a.begin(),a.end(),greater<int>());
+    ll ans=0;
+    for(int i=0;i<w;i++)ans+=a[i]*cont[i];
+    cout<<ans<<endl;
 }
 
 signed main(){
