@@ -14,33 +14,28 @@ ll M = 1e9+7;
 #define bitsize(n) (63 - __builtin_clzll(n))
 #define lcm(a,b) (a/__gcd(a, b)*b)
 
-//Grinding CP to become specialist
 void Nitin_Chaudhary(){
-    ll n,m,k;
-    cin>>n>>m>>k;
-    vector<ll>cont;
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    ll count0=0;
+    ll count1=0;
     for(ll i=0;i<n;i++){
-        for(ll j=0;j<m;j++){
-            ll sr,sc,er,ec;
-            sr=max(0LL,i-k+1);
-            er=min(i,n-k);
-            sc=max(0LL,j-k+1);
-            ec=min(j,m-k);
-            ll val=(er-sr+1)*(ec-sc+1);
-            // cout<<val<<endl;
-            cont.push_back(val);
-
+        if(i==0){
+            if(s[i]=='0')count0++;
+            else count1++;
+        }
+        else{
+            if(s[i]=='0'){
+                if(s[i-1]!='0')count0++;
+            }
+            else count1++;
         }
     }
-    sort(cont.begin(),cont.end(),greater<int>());
-    ll w;
-    cin>>w;
-    vector<ll>a(w);
-    for(ll i=0;i<w;i++)cin>>a[i];
-    sort(a.begin(),a.end(),greater<int>());
-    ll ans=0;
-    for(int i=0;i<w;i++)ans+=a[i]*cont[i];
-    cout<<ans<<endl;
+    // cout<<count0<<" "<<count1<<endl;
+    if(count0>=count1)cout<<"NO"<<endl;
+    else cout<<"YES"<<endl;
 }
 
 signed main(){
