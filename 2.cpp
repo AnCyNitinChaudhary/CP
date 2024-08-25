@@ -14,32 +14,10 @@ ll M = 1e9+7;
 #define bitsize(n) (63 - __builtin_clzll(n))
 #define lcm(a,b) (a/__gcd(a, b)*b)
 
+//Grinding CP to become specialist
 void Nitin_Chaudhary(){
     ll n;
     cin>>n;
-    string s;
-    cin>>s;
-    unordered_map<char,int>um;
-    for(auto i:s)um[i]++;
-    int start=0;
-    int ind=0;
-    priority_queue<pair<int,char>>pq;
-    for(auto i:um)pq.push({i.second,i.first});
-    while(!pq.empty()){
-        int temp=pq.top().first;
-        char c=pq.top().second;
-        pq.pop();
-        while(temp--){
-            s[ind]=c;
-            ind+=2;
-            if(ind>=n){
-                start++;
-                ind=start;
-            }
-        }
-    }
-    cout<<s<<endl;
-
 }
 
 signed main(){

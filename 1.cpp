@@ -1,35 +1,43 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define int long long
 #define endl '\n'
-ll M = 1e9+7;
-#define vi vector<int>
-#define vll vector<ll>
-#define vb vector<bool>
-#define vvi vector<vi>
-#define vpii vector<pii>
-#define fastIO ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);cout.precision(numeric_limits<double>::max_digits10);
-#define setbits(n)  __builtin_popcountll(n)
-#define bitsize(n) (63 - __builtin_clzll(n))
-#define lcm(a,b) (a/__gcd(a, b)*b)
-
-void Nitin_Chaudhary(){
-    ll n;
-    cin>>n;
+#define int_max 1e18
+#define int_min -1e18
+ll MOD =1e9+7;
+//Grinding for becoming Specialist
+//treat 0 as -1 and now problem reduced to count no. of subarray whose sum is equal to 0
+ll subarraySum(vector<ll>& nums) {
+        ll n=nums.size();
+        ll sum=0;
+        ll ans=0;
+        unordered_map<ll,ll>um;
+        um[0]=1;
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            ll right=n-i;
+            ll left=um[sum];
+            ans+=((left%MOD)*(right%MOD))%MOD;
+            ans%=MOD;
+            um[sum]+=(i+2);
+            um[sum]%=MOD;
+        }
+        return ans;
+}
+int main(){
+ios::sync_with_stdio(false);
+cin.tie(NULL);
+ll t;
+cin>>t;
+while(t--){
     string s;
     cin>>s;
-    if(s[0]==s[n-1])cout<<"NO"<<endl;
-    else cout<<"YES"<<endl;
-
-}
-
-signed main(){
-    fastIO;
-    ll t;
-    cin>>t;
-    while(t--){
-       Nitin_Chaudhary();
+    vector<ll>nums;
+    for(auto i:s){
+        if(i=='0')nums.push_back(-1);
+        else nums.push_back(1);
     }
-    return 0;
+    cout<<subarraySum(nums)<<endl;
+}
+return 0;
 }
