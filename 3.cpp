@@ -14,7 +14,6 @@ ll M = 1e9+7;
 #define bitsize(n) (63 - __builtin_clzll(n))
 #define lcm(a,b) (a/__gcd(a, b)*b)
 
-//Grinding CP to become specialist
 void Nitin_Chaudhary(){
     ll n;
     cin>>n;

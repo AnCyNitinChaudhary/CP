@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-// #define int long long
+#define int long long
 #define endl '\n'
 ll M = 1e9+7;
 #define vi vector<int>
@@ -14,57 +14,31 @@ ll M = 1e9+7;
 #define bitsize(n) (63 - __builtin_clzll(n))
 #define lcm(a,b) (a/__gcd(a, b)*b)
 
-//Grinding CP to become specialist
 void Nitin_Chaudhary(){
-    int l,r,L,R;
-    cin>>l>>r;
-    cin>>L>>R;
-    if(L>r||l>R){
-        cout<<1<<endl;
-        return;
-    }
-    if(L<l){
-        swap(l,L);
-        swap(r,R);
-    }
-    vector<pair<int,int>>v;
-    v.push_back({l,r});
-    v.push_back({L,R});
-    // if(v[0].second<v[1].first)cout<<1<<endl;
-    // else if(v[0].second==v[1].first){
-    //     if(v[0].first<v[0].second)cout<<2<<endl;
-    //     else cout<<1<<endl;
-    //     return;
-    // }
-    // else if((v[0].second>=v[1].first)&&v[1].second>=v[0].second){
-    //     // cout<<"a2"<<endl;
-    //     cout<<v[0].second-v[1].first+1<<endl;
-    // }
-    // else {
-    //     // cout<<"a3"<<endl;
-
-    //     cout<<v[1].second-v[1].first+2<<endl;
-    // }
-    map<int,int>um;
-    for(ll i=v[0].first;i<=v[0].second;i++)um[i]++;
-    for(ll i=v[1].first;i<=v[1].second;i++)um[i]++;
-    ll temp=0;
-    ll left=-1;
-    ll right=-1;
-    for(int i=1;i<=100;i++){
-        if(um[i]==2){
-            temp++;
-            if(left==-1)left=i;
-            right=i;
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    unordered_map<char,int>um;
+    for(auto i:s)um[i]++;
+    int start=0;
+    int ind=0;
+    priority_queue<pair<int,char>>pq;
+    for(auto i:um)pq.push({i.second,i.first});
+    while(!pq.empty()){
+        int temp=pq.top().first;
+        char c=pq.top().second;
+        pq.pop();
+        while(temp--){
+            s[ind]=c;
+            ind+=2;
+            if(ind>=n){
+                start++;
+                ind=start;
+            }
         }
     }
-    temp--;
-    ll mini=min({l,L,r,R});
-    ll maxi=max({l,L,r,R});
-    // if(min(v[0].first==v[1].first)||(v[0].second==v[1].second))temp--;
-    if(mini<left)temp++;
-    if(maxi>right)temp++;
-    cout<<temp<<endl;
+    cout<<s<<endl;
 
 }
 
