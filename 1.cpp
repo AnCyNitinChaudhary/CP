@@ -13,61 +13,38 @@ ll M = 1e9+7;
 #define setbits(n)  __builtin_popcountll(n)
 #define bitsize(n) (63 - __builtin_clzll(n))
 #define lcm(a,b) (a/__gcd(a, b)*b)
-//From this question i learn that-> Yes it might take time to get it accepted by it will definitely accepted if you keep trying it. I have changed my way of implementation and finally make it implemented.
+
+//Grinding CP to become specialist
+//Use of knutth morris pratt algo in testing round 19 div 3 c1 and c2
 void Nitin_Chaudhary(){
-    ll n,m,k;
-    cin>>n>>m>>k;
+    int fail[400000];
+	int n,i,j;
     string s;
-    cin>>s;
-    s+="L";
-    bool flag=true;
-    ll curr=-1;
-    while(curr<n){
-        // cout<<curr<<endl;
-        ll end=curr;
-        for(int i=curr+1;i<=n;i++){
-            if(s[i]=='L'){
-                end=i;
-                break;
-            }
-        }
-        if(end-curr<=m){
-            curr=end;
-            continue;
-        }
-        else{
-            ll finalend=end;
-            while(end-curr>m){
-                if(s[end-1]=='W'){
-                    if(k>0){
-                        k--;
-                        end--;
-                    }
-                    else break;
-                }
-                else break;
-            }
-            if(end-curr<=m){
-                curr=finalend;
-            }
-            else break;
-        }
-
-    }
-    if(curr==n)cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
-    
-    
-    
-
+	cin>>s;
+	n=s.length();
+	fail[0]=0;
+	j=0;
+	for(i=1;i<n;i++)
+	{
+		while(j>0&&s[i]!=s[j])j=fail[j-1];
+		if(s[i]==s[j])j++;
+		fail[i]=j;
+	}
+	if(fail[n-1]*2>n)
+	{
+		cout<<"YES"<<endl;
+		for(i=0;i<fail[n-1];i++)cout<<s[i];
+		cout<<endl;
+	}
+	else cout<<"NO"<<endl;
 }
 
 signed main(){
     fastIO;
-    ll t;
-    cin>>t;
-    while(t--){
+    // ll t;
+    // cin>>t;
+    // while(t--){
        Nitin_Chaudhary();
-    }
+    // }
     return 0;
 }
