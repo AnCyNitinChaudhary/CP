@@ -15,36 +15,45 @@ ll M = 1e9+7;
 #define lcm(a,b) (a/__gcd(a, b)*b)
 
 //Grinding CP to become specialist
-//Use of knutth morris pratt algo in testing round 19 div 3 c1 and c2
 void Nitin_Chaudhary(){
-    int fail[400000];
-	int n,i,j;
-    string s;
-	cin>>s;
-	n=s.length();
-	fail[0]=0;
-	j=0;
-	for(i=1;i<n;i++)
-	{
-		while(j>0&&s[i]!=s[j])j=fail[j-1];
-		if(s[i]==s[j])j++;
-		fail[i]=j;
-	}
-	if(fail[n-1]*2>n)
-	{
-		cout<<"YES"<<endl;
-		for(i=0;i<fail[n-1];i++)cout<<s[i];
-		cout<<endl;
-	}
-	else cout<<"NO"<<endl;
+    ll n;
+    cin>>n;
+    set<pair<ll,ll>>us;
+    set<pair<ll,ll>>s;
+    vector<pair<ll,ll>>v;
+    ll x,y;
+    for(int i=0;i<n;i++){
+        cin>>x>>y;
+        us.insert({x,y});
+        s.insert({x,y});
+        v.push_back({x,y});
+    }
+    ll ans=0;
+    set<pair<ll,ll>>us1;
+    for(auto i:v){
+        if((us.find({i.first,0})!=us.end())&&(us.find({i.first,1})!=us.end())&&(us1.find({i.first,0})==us1.end())&&(us1.find({i.first,1})==us1.end())){
+            ans+=n-2;
+            us.erase({i.first,0});
+            us.erase({i.first,1});
+            us1.insert({i.first,0});
+            us1.insert({i.first,1});
+        }
+        if(i.second==1){
+            if((s.find({i.first-1,0})!=s.end())&&(s.find({i.first+1,0})!=s.end()))ans++;
+        }
+        else{
+            if((s.find({i.first-1,1})!=s.end())&&(s.find({i.first+1,1})!=s.end()))ans++;
+        }
+    }
+    cout<<ans<<endl;
 }
 
 signed main(){
     fastIO;
-    // ll t;
-    // cin>>t;
-    // while(t--){
+    ll t;
+    cin>>t;
+    while(t--){
        Nitin_Chaudhary();
-    // }
+    }
     return 0;
 }

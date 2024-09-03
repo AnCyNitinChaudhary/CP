@@ -16,8 +16,25 @@ ll M = 1e9+7;
 
 //Grinding CP to become specialist
 void Nitin_Chaudhary(){
-    ll n;
-    cin>>n;
+    ll x,y,k;
+    cin>>x>>y>>k;
+    ll val1,val2;
+    val1=(x/k);
+    if(x%k!=0)val1++;
+    val2=(y/k);
+    if(y%k!=0)val2++;
+    if(val1>val2)cout<<2*val1-1<<endl;
+    else cout<<2*val2<<endl;
+    // ll ans=0;
+    // bool flag=true;
+    // while(x>0||y>0){
+    //     if(flag)x-=k;
+    //     else y-=k;
+    //     flag=!flag;
+    //     ans++;
+    // }
+    // cout<<ans<<endl;
+
 }
 
 signed main(){

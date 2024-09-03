@@ -75,9 +75,10 @@ ll ncr(ll n, ll r)
         return 0;
     return mod_div(fact[n], fact[n - r] * fact[r]);
 }
-//Grinding CP to become specialist
+//Doing CP because Coding is My Love.
 void Nitin_Chaudhary(){
     ll n;
+    cout<<mod_div(4,2)<<endl;
 }
 signed main(){
 fastIO;
