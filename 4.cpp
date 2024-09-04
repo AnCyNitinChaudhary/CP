@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define ll unsigned long long
+#define ll long long
 #define int long long
 #define endl '\n'
 ll M = 1e9+7;
@@ -16,51 +16,8 @@ ll M = 1e9+7;
 
 //Doing CP because Coding is My Love.
 void Nitin_Chaudhary(){
-    ll n,q;
-    cin>>n>>q;
-    ll a[n];
-    for(ll i=0;i<n;i++){
-        cin>>a[i];
-    }
-    // ll b[n*n];
-    // ll ind=0;
-    // ll k=0;
-    // ll sum=0;
-    // ll pre=0;
-    // for(ll i=0;i<n*n;i++){
-    //     sum+=a[ind];
-    //     k++;
-    //     b[i]=sum;
-    //     ind++;
-    //     if(ind==n){
-    //         ind=0;
-    //     }
-    //     if(k==n){
-    //         pre++;
-    //         if(pre==n)pre=0;
-    //         ind=pre;
-    //         k=0;
-    //     }
-    // }
-
-
-    ll pre[n];
-    pre[0]=a[0];
-    for(ll i=1;i<n;i++)pre[i]=pre[i-1]+a[i];
-    while(q--){
-        ll l,r;
-        cin>>l>>r;
-        ll suml=0;
-        if(l<n)suml=pre[l-1];
-        else{
-            suml+=pre[n-1]*(l/n);
-            if(l%n!=0){
-                ll 
-            }
-
-        }
-    }
-
+    ll n;
+    cin>>n;
 }
 
 signed main(){

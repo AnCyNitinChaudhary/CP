@@ -14,38 +14,16 @@ ll M = 1e9+7;
 #define bitsize(n) (63 - __builtin_clzll(n))
 #define lcm(a,b) (a/__gcd(a, b)*b)
 
-//Grinding CP to become specialist
+//Doing CP because Coding is My Love.
 void Nitin_Chaudhary(){
-    ll n;
-    cin>>n;
-    set<pair<ll,ll>>us;
-    set<pair<ll,ll>>s;
-    vector<pair<ll,ll>>v;
-    ll x,y;
-    for(int i=0;i<n;i++){
-        cin>>x>>y;
-        us.insert({x,y});
-        s.insert({x,y});
-        v.push_back({x,y});
+    ll x;
+    cin>>x;
+    for(ll i=0;i<32;i++){
+        if((x&(1<<i))!=0)cout<<1<<" ";
+        else cout<<0<<" ";
     }
-    ll ans=0;
-    set<pair<ll,ll>>us1;
-    for(auto i:v){
-        if((us.find({i.first,0})!=us.end())&&(us.find({i.first,1})!=us.end())&&(us1.find({i.first,0})==us1.end())&&(us1.find({i.first,1})==us1.end())){
-            ans+=n-2;
-            us.erase({i.first,0});
-            us.erase({i.first,1});
-            us1.insert({i.first,0});
-            us1.insert({i.first,1});
-        }
-        if(i.second==1){
-            if((s.find({i.first-1,0})!=s.end())&&(s.find({i.first+1,0})!=s.end()))ans++;
-        }
-        else{
-            if((s.find({i.first-1,1})!=s.end())&&(s.find({i.first+1,1})!=s.end()))ans++;
-        }
-    }
-    cout<<ans<<endl;
+    cout<<endl;
+
 }
 
 signed main(){
